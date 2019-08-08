@@ -1,4 +1,18 @@
+body{
+  background-color: rgb(34, 33, 33);
+  color: rgb(255, 255, 255);
+}
+
 .movies-list img{
   object-fit: cover;
-  height: 300px;
+  height: 20rem;
+  width: 15rem;
+  align-self: center;
+}
+.movie-card{
+  width: 15rem;
+  margin: 1rem;
+}
+.container{
+  max-width: 90vw;
 }

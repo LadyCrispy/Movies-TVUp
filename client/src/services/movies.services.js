@@ -25,7 +25,7 @@ export default class services {
     deleteTheMovie = id =>{
       return this.service.delete(`/movies/${id}`)
         .then(res=> res.data)
-        .catch(err=> console.log(err))
+        .catch(err=> alert(err))
     }
 
     editTheMovie = (id, movieUpdated) =>{

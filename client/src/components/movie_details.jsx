@@ -21,20 +21,31 @@ export default class MovieDetails extends Component {
 
     render(){
         return(
-
+            
             <section>
-                
-                <figure>
+                {this.state.movie? 
+                <div>
+                    <figure>
                     <img src={this.state.movie.poster_path} alt={this.state.movie.original_title}/>
-                </figure>
+                    </figure>
 
-                <aside>
-                    <p>Título: {this.state.movie.original_title}</p>
-                    <p>Sinopsis: {this.state.movie.overview}</p>
-                    <a className='btn btn-sm btn-outline-info' href={this.state.movie.video} target='_blank' rel="noopener noreferrer">Video</a>
-                    <MovieEditForm {...this.state}/>
-                    <Link className='btn btn-sm btn-outline-dark' to='/'>Volver</Link>
-                </aside>
+                    <aside>
+                        <p>Título: {this.state.movie.original_title}</p>
+                        <p>Sinopsis: {this.state.movie.overview}</p>
+                        <a className='btn btn-sm btn-outline-info' href={this.state.movie.video} target='_blank' rel="noopener noreferrer">Video</a>
+                        <MovieEditForm {...this.state}/>
+                        <Link className='btn btn-sm btn-dark' to='/'>Volver</Link>
+                    </aside>
+
+                </div>
+            : 
+            <div>
+                <h1>El ID introducido no existe</h1>
+                <Link className='btn btn-sm btn-dark' to='/'>Volver</Link>
+    
+            </div>
+            
+            }
 
             </section>        
         

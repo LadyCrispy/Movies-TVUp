@@ -16,7 +16,8 @@ router.get('/movies', (req, res) => {
 router.get('/movies/:id', (req, res) =>{
     Movie.findById(req.params.id)
         .then(data=> res.json(data))
-        .catch(err=> console.log('There was an error: ', err))
+        .catch(err=> res.status(400).json({errorMessage: 'Hubo un error, no se pudo añadir la película'}))
+    
 })
 
 //POST delete movie
@@ -29,6 +30,17 @@ router.delete('/movies/:id', (req, res)=>{
         .catch(err=> console.log(err))
 
 })
+
+
+
+
+
+
+
+
+
+
+
 
 
 // //POST edit movie
