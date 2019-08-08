@@ -23,7 +23,7 @@ export default class services {
     }
 
     deleteTheMovie = id =>{
-      return this.service.post(`/delete/${id}`)
+      return this.service.delete(`/movies/${id}`)
         .then(res=> res.data)
         .catch(err=> console.log(err))
     }

@@ -25,12 +25,24 @@ class MoviesList extends Component {
     }
 
 
-    isDeleted=(movies)=>{
-        
-        this.setState({
-            movies: movies
-        })
+    // isDeleted=(movies)=>{
+    //    movies[1][id]
+    //     this.setState({
+    //         movies: movies
+    //     })
+    // }
+
+    deleteMovie = id =>{
+        this.service.deleteTheMovie(id)
+            .then(x=>{
+               const peli= this.state.movies.filter(movie=> movie['_id']!==id)
+               this.setState({
+                   movies: peli
+               })
+            })
     }
+
+
     render(){
         return(
             <div className='container'>
@@ -38,7 +50,7 @@ class MoviesList extends Component {
                 <h1>Listado de películas</h1>
                 <MovieAddForm/>
                 <div className='row movies-list'>
-                    {this.state.movies.map((movie, idx)=> <MoviesCard {...movie} key={idx} isDeleted={this.isDeleted}/>)}
+                    {this.state.movies ? this.state.movies.map((movie, idx)=> <MoviesCard {...movie} key={idx} delete={this.deleteMovie}/>) : null}
                 </div>
             
             </div>

@@ -11,13 +11,13 @@ export class MoviesCard extends Component{
 
     }
 
-    deleteMovie=()=>{
-        this.service.deleteTheMovie(this.props._id)
-            .then(movies=>{
-                console.log('done')
-                this.props.isDeleted(movies)
-            })
-    }
+    // deleteMovie=()=>{
+    //     this.service.deleteTheMovie(this.props._id)
+    //         .then(movies=>{
+    //             console.log('done')
+    //             this.props.isDeleted(movies)
+    //         })
+    // }
 
     //Cambiar el borrado al padre
 
@@ -31,7 +31,7 @@ export class MoviesCard extends Component{
                  <header className="card-body">
                      <h5 className="card-title">{this.props.original_title}</h5>
                      <Link className="btn btn-sm btn-outline-dark" to={`/movies/${this.props._id}`}> Ver detalles </Link>
-                     <button className='btn btn-sm btn-outline-dark' onClick={this.deleteMovie}>Eliminar</button>
+                     <button className='btn btn-sm btn-outline-dark' onClick={()=>this.props.delete(this.props._id)}>Eliminar</button>
                  </header>
              </article>
             </div>
