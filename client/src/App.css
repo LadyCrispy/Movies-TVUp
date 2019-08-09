@@ -5,14 +5,14 @@ body{
 
 
 .hero{
-  height: 30vh;
+  height: 24vh;
   width: 90vw;
   text-align: center;
+  margin-bottom: 5vh;
 }
 .hero h1{
   margin-top: 25vh;
-  /* position: relative; */
-  /* z-index: 300; */
+  color: grey;
 }
 video{
   width: 100vw;
@@ -24,6 +24,12 @@ video{
   display: block;
   margin-top: -35vh;
 }
+.search-movie{
+  position: absolute;
+  margin-top: 33vh;
+  background-color: rgb(214, 210, 210);
+}
+
 .movies-list img{
   object-fit: cover;
   height: 20rem;
@@ -70,6 +76,7 @@ video{
 
 .nav-links{
   color: inherit;
+  margin-right: 2vw;
 }
 
 .nav-links:hover{
@@ -82,12 +89,13 @@ video{
   font-size: 3rem;
 }
 
-
-
-
-
-
-
+.add-button{
+  margin-top: 1.5vh;
+  font-size: 1.6rem;
+}
+.modal-add{
+  color: black;
+}
 
 
 
@@ -108,7 +116,7 @@ video{
     height: 30vh;
     width: 90vw;
     text-align: center;
-    margin-bottom: 7vh;
+    margin-bottom: 14vh;
   }
   .hero h1{
     margin-top: 13vh;
@@ -125,6 +133,9 @@ video{
     display: block;
     margin-top: 8vh;
   }
+  .search-movie{
+    margin-top: 37vh;
+  }
   .detail img{
     width: 80vw;
     height: 60vh;
@@ -134,7 +145,7 @@ video{
 
 @media (min-width: 1281px) {
   .hero{
-    height: 14vh;
+    
     margin-bottom: 15vh;
   }
   .detail{
@@ -146,12 +157,15 @@ video{
   video{
     height: 30vh;
   }
-  .hero{
-    margin-bottom: -10vh;
-  }
+ 
   .detail{
     display: flex;
   }
+  
+  .search-movie{
+    margin-top: 23vh;
+  }
+
 }
 
 
@@ -160,12 +174,16 @@ video{
   
   .hero{
     height: 14vh;
+    margin-bottom: 9vh;
   }
   video{
     height: 49vh;
   }
   .hero h1{
     margin-top: 17vh;
+  }
+  .search-movie{
+    margin-top: 18vh;
   }
   .detail{
     margin-top: 10vh;
@@ -182,5 +200,8 @@ video{
    }
    .detail-links{
     width: 20vw;
+   }
+   .title{
+     font-size: 1.5rem;
    }
 }

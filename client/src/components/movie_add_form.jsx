@@ -62,9 +62,9 @@ class MovieAddForm extends Component {
         return (
             <div>
 
-                <button className="btn btn-dark" onClick={this.handleShow}>Añadir película</button>
+                <button className="btn btn-dark add-button " onClick={this.handleShow}>Añadir película</button>
 
-                <Modal show={this.state.show} onHide={this.handleClose}>
+                <Modal show={this.state.show} onHide={this.handleClose} className='modal-add'>
                     <Modal.Header closeButton>
                         <Modal.Title>Nueva película</Modal.Title>
                     </Modal.Header>
