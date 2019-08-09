@@ -3,6 +3,27 @@ body{
   color: rgb(255, 255, 255);
 }
 
+
+.hero{
+  height: 30vh;
+  width: 90vw;
+  text-align: center;
+}
+.hero h1{
+  margin-top: 25vh;
+  /* position: relative; */
+  /* z-index: 300; */
+}
+video{
+  width: 100vw;
+  height: 20vh;
+  object-fit: cover;
+  position: absolute;
+  margin-left: -6.5vw;
+  z-index: -100;
+  display: block;
+  margin-top: -35vh;
+}
 .movies-list img{
   object-fit: cover;
   height: 20rem;
@@ -15,4 +36,106 @@ body{
 }
 .container{
   max-width: 90vw;
+}
+.row{
+  width: 93vw;
+}
+
+@media (max-width: 600px) {
+  .movies-list img{
+    object-fit: cover;
+    height: 10rem;
+    width: 9.5rem;
+    align-self: center;
+  }
+  .movie-card{
+    width: 9.6rem;
+    margin: 0.3rem;
+  }
+  .hero{
+    height: 30vh;
+    width: 90vw;
+    text-align: center;
+    margin-bottom: 7vh;
+  }
+  .hero h1{
+    margin-top: 13vh;
+    position: absolute;
+    /* z-index: 300; */
+  }
+  video{
+    width: 100vw;
+    height: 20vh;
+    object-fit: cover;
+    position: absolute;
+    margin-left: -8.5vw;
+    z-index: -100;
+    display: block;
+    margin-top: 8vh;
+  }
+  .detail img{
+    width: 80vw;
+    height: 60vh;
+  }
+
+}
+
+@media (min-width: 1281px) {
+  .hero{
+    height: 14vh;
+    margin-bottom: 15vh;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  video{
+    height: 30vh;
+  }
+  .hero{
+    margin-bottom: -10vh;
+  }
+}
+
+.error{
+  margin-top: 20vh; 
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detail{
+  margin: 20vh 10vw;
+  /* display: flex; */
+}
+
+.detail img{
+  width: 30vw;
+  height: 60vh;
+  object-fit: cover;
+  margin-right: 3vw;
+}
+.detail p{
+  text-align: justify;
+}
+.detail-links{
+  display: flex;
+  width: 10vw;
+  margin-bottom: 2vh;
+  text-align: center;
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .hero{
+    height: 14vh;
+  }
+  video{
+    height: 49vh;
+  }
+  .hero h1{
+    margin-top: 17vh;
+  }
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+   
 }

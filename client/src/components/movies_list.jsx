@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import MoviesServices from '../services/movies.services'
 import { MoviesCard } from './cards/movies.cards';
 import MovieAddForm from './movie_add_form'
+import {NavBar} from './NavBar'
 
 
 class MoviesList extends Component {
@@ -25,13 +26,6 @@ class MoviesList extends Component {
     }
 
 
-    // isDeleted=(movies)=>{
-    //    movies[1][id]
-    //     this.setState({
-    //         movies: movies
-    //     })
-    // }
-
     deleteMovie = id =>{
         this.service.deleteTheMovie(id)
             .then(x=>{
@@ -46,9 +40,12 @@ class MoviesList extends Component {
     render(){
         return(
             <div className='container'>
+                <section className='hero'>
+                    <video src="https://res.cloudinary.com/dgesryvti/video/upload/v1565296650/Movies_posters/y2mate.com_-_batman_vs_bane_the_dark_knight_rises_full_fight_1080p_hd_rDuetklFtDQ_1080p_vj40gk.mp4" playsInline autoPlay muted loop>video</video>
+                    <h1>Listado de películas</h1>
 
-                <h1>Listado de películas</h1>
-                <MovieAddForm/>
+                </section>
+                {/* <MovieAddForm className='add-btn'/> */}
                 <div className='row movies-list'>
                     {this.state.movies ? this.state.movies.map((movie, idx)=> <MoviesCard {...movie} key={idx} delete={this.deleteMovie}/>) : null}
                 </div>

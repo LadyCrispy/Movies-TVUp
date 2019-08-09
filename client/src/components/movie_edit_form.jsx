@@ -57,11 +57,11 @@ class MovieEditForm extends Component {
     }
 
     render() {
-        {console.log(this.props.movie)}
         return (
             <div>
+            {console.log(this.props.movie)}
 
-                <button className="btn btn-dark" onClick={this.handleShow}>Editar</button>
+                <button className="btn btn-outline-secondary detail-links" onClick={this.handleShow}>Editar</button>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>

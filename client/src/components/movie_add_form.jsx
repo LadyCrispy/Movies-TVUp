@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import MoviesServices from '../services/movies.services'
 import Modal from 'react-bootstrap/Modal'
-import {createReadStream} from 'fs'
 
 class MovieAddForm extends Component {
 
