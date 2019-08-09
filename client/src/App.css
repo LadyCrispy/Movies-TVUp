@@ -48,11 +48,16 @@ video{
 }
 
 .error{
-  margin-top: 20vh; 
-  flex-direction: column;
-  justify-content: center;
+  margin: 20vh 30vw; 
 }
-
+.error img{
+  height: 30vh;
+}
+.return{
+  display: block;
+  width: 20vw;
+  margin: 5vh;
+}
 .detail{
   margin: 20vh 10vw;
   /* display: flex; */
@@ -68,9 +73,10 @@ video{
   text-align: justify;
 }
 .detail-links{
-  display: flex;
+  /* display: flex; */
   width: 10vw;
   margin-bottom: 2vh;
+  margin-right: 2vh;
   text-align: center;
 }
 
@@ -93,11 +99,30 @@ video{
   margin-top: 1.5vh;
   font-size: 1.6rem;
 }
-.modal-add{
+.modal{
   color: black;
 }
-
-
+.button-edit{
+  color: grey;
+}
+label{
+  color: black;
+}
+.top-button-edit{
+  padding-right: 38vw;
+}
+.dark{
+  color: grey;
+  background-color: rgb(34, 33, 33);
+  border-bottom: 0.2rem solid grey;
+}
+.edit{
+  margin: 2rem;
+}
+.save:hover{
+  text-decoration: none;
+  color: inherit;
+}
 
 
 
@@ -165,6 +190,9 @@ video{
   .search-movie{
     margin-top: 23vh;
   }
+  .top-button-edit{
+    padding-right: 34vw;
+  }
 
 }
 
@@ -191,6 +219,9 @@ video{
   .detail img{
     width: 50vw;
   }
+  .top-button-edit{
+    padding-right: 61vw;
+  }
 }
 
 
@@ -202,6 +233,9 @@ video{
     width: 20vw;
    }
    .title{
+     font-size: 1.5rem;
+   }
+   .error h1{
      font-size: 1.5rem;
    }
 }

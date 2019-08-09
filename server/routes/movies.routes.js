@@ -70,25 +70,14 @@ router.post('/movies', uploader.any(), (req, res)=>{
 //POST edit movie
 router.put('/movies/:id' , (req, res)=>{
     const {original_title, overview, video}= req.body
-    const poster_path = req.file
-    console.log('hola', req.body)
-    if(req.file){
-        Movie.findByIdAndUpdate({_id: req.params.id}, {$set: {original_title, overview, poster_path, video}}, {new: true})
+    // const poster_path = req.file
+    console.log(req.body, 'body')
+        Movie.findByIdAndUpdate({_id: req.params.id}, {$set: {original_title, overview, video}}, {new: true})
             .then(movie=>{
                 console.log('movie updated')
                 res.json(movie)
             })
             .catch(err=>console.log(err))
-            // .catch(err=>res.status(200).json({errorMessage: 'No es posible actualizar la información'}))
-    }else{
-        Movie.update({_id: req.params.id}, {$set: {original_title, overview, video}}, {new: true})
-        .then(movie=>{
-            console.log('movie updated')
-            res.json(movie)
-        })
-        .catch(err=>console.log(err))
-        // .catch(err=>res.status(200).json({errorMessage: 'No es posible actualizar la información'}))
-    }
 })
 
 router.post('/upload', uploader.single("poster_path"), (req, res, next) => {

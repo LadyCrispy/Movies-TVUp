@@ -29,7 +29,7 @@ export default class services {
     }
 
     editTheMovie = (id, movieUpdated) =>{
-      return this.service.put(`/edit/${id}`, movieUpdated)
+      return this.service.put(`/movies/${id}`, movieUpdated)
         .then(res=> res.data)
         .catch(err=>console.log(err))
     }
