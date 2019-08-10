@@ -13,11 +13,16 @@ var storage = cloudinaryStorage({
   cloudinary: cloudinary,
   folder: 'Movies_posters',
   allowedFormats: ['jpg', 'png'],
-  filename: function (req, file, cb) {
-    cb(null, file.originalname + new Date());
+  filename: function (req, res, cb) {
+    cb(null, res.originalname + new Date());
   }
 })
 
+
+
+
+const uploader = multer({ storage });
+module.exports = uploader;
 const uploadCloud = multer({ storage: storage });
 
 module.exports = uploadCloud;

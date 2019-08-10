@@ -40,5 +40,9 @@ export default class services {
           .catch(err => console.log(err))
     }
 
-
+    handleUpload = theFile => {
+      return this.service.post('/upload', theFile)
+          .then(res => res.data)
+          .catch(err => console.log(err));
+  }
 }    

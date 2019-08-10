@@ -9,9 +9,11 @@ export default class MovieDetails extends Component {
         this.state = { 
             movie: {} 
         }
-        this.service = new MoviesService()
+        this.service = new MoviesService();
+        
+        let uploadData
     }
-
+    
     componentDidMount(){
         this.service.movieDetails(this.props.match.params.id)
             .then(theMovie=>this.setState({
@@ -36,6 +38,30 @@ export default class MovieDetails extends Component {
             .then(x=>console.log('done'))
     }
 
+    
+    handleFileUpload = e => {
+
+        this.uploadData = new FormData();
+        this.uploadData.append("poster_path", e.target.files[0]);
+
+        this.service.handleUpload(this.uploadData)
+            .then(response => {
+                console.log(response)
+                this.setState({
+                    movie: {
+                        ...this.state.movie, poster_path: response.secure_url
+                    }
+                })
+            })
+            .catch(err => console.log(err))
+    }
+
+    hideBtn=()=>{
+        setTimeout(() => {
+            this.uploadData=0         
+        }, 2000);
+
+    }
 
     render(){
         return(
@@ -43,9 +69,15 @@ export default class MovieDetails extends Component {
             <section>
                 {this.state.movie? 
                 <div className='detail'>
-                    <figure>
-                    <img src={this.state.movie.poster_path} alt={this.state.movie.original_title}/>
-                    </figure>
+                    <div>
+                        <figure>
+                        <img src={this.state.movie.poster_path} alt={this.state.movie.original_title}/>
+                        </figure>
+                        <form onSubmit={this.handleSubmit}>
+                            <input onChange={this.handleFileUpload} type="file" name="poster_path" id="poster_path" placeholder='Elige imagen' /> <br />
+                            { this.uploadData ? <button type='submit' onClick={this.hideBtn}>Cambiar imagen</button> : null}
+                        </form>
+                    </div>
 
                     <aside>
                         <h1>{this.state.movie.original_title}</h1> <br/>

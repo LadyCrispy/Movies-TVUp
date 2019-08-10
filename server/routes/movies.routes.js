@@ -31,31 +31,8 @@ router.delete('/movies/:id', (req, res)=>{
 
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-// //POST edit movie
-// router.post('/edit/:id' , (req, res, next)=>{
-//     const update = {original_title, overview, poster_path, video, homepage}=req.body
-//     Movie.findByIdAndUpdate(req.params.id, update, {new: true})
-//         .then(movieUpdated=>{
-//             console.log(req.body, 'succes')
-//             res.json(movieUpdated)
-//         })
-//         .catch(err=>console.log(err))
-// })
-
 //POST add new movie
-router.post('/movies', uploader.any(), (req, res)=>{
+router.post('/movies', (req, res)=>{
     console.log('Entrnado en el new movies')
     console.log(req.body)
     const newMovie = new Movie (req.body)
@@ -69,25 +46,20 @@ router.post('/movies', uploader.any(), (req, res)=>{
 
 //POST edit movie
 router.put('/movies/:id' , (req, res)=>{
-    const {original_title, overview, video}= req.body
-    // const poster_path = req.file
-    console.log(req.body, 'body')
-        Movie.findByIdAndUpdate({_id: req.params.id}, {$set: {original_title, overview, video}}, {new: true})
-            .then(movie=>{
-                console.log('movie updated')
-                res.json(movie)
-            })
-            .catch(err=>console.log(err))
+    const {original_title, overview, poster_path, video}= req.body
+   
+    console.log(req.body, 'body', req.file, 'file')
+        
+    
+        Movie.findByIdAndUpdate({_id: req.params.id}, {$set: {original_title, overview, video, poster_path}}, {new: true})
+                .then(movie=>{
+                    console.log('movie updated')
+                    res.json(movie)
+                })
+                .catch(err=>console.log(err))
+    
+    
 })
 
-router.post('/upload', uploader.single("poster_path"), (req, res, next) => {
-
-    if (!req.file) { 
-        next(new Error('No file uploaded!'));
-        return;
-    }
-
-    res.json({ secure_url: req.file.secure_url });
-})
 
 module.exports = router;

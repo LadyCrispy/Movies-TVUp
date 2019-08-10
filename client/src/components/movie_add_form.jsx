@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MoviesServices from '../services/movies.services'
 import Modal from 'react-bootstrap/Modal'
+import { Redirect } from 'react-router-dom'
 
 class MovieAddForm extends Component {
 
@@ -11,16 +12,19 @@ class MovieAddForm extends Component {
             movie: {
                 original_title: '',
                 overview: '',
-                poster_path: null,
-                video: '',
+                poster_path: '',
+                video: 'https://',
 
             },
-            show: false
+            show: false,
+            redirect: false
         }
         this.handleShow = this.handleShow.bind(this)
         this.handleClose = this.handleClose.bind(this)
         this.service = new MoviesServices()
+        let movieId
     }
+
 
     handleClose = () => this.setState({ show: false })
     handleShow = () => this.setState({ show: true })
@@ -35,30 +39,47 @@ class MovieAddForm extends Component {
         })
     }
 
-    handleSubmit = e => {
-        e.preventDefault()
-        const uploadData = new FormData();
-        
-        uploadData.append('original_title', this.state.movie.original_title)
-        uploadData.append('overview', this.state.movie.overview)
-        uploadData.append('poster_path', this.state.poster_path)
-        uploadData.append('video', this.state.movie.video)
-
-        this.service.addMovie(uploadData)
-            .then(console.log('service'))
+    setRedirect = () => {
+        if(this.state.movie.original_title.length){
+            setTimeout(() => {
+                this.setState({
+                    redirect: true
+                })
+            }, 1000);
+        }else{this.handleShow()}
     }
 
-    getFile = e => {
-       e.preventDefault()
-       this.setState({
-           
-           poster_path: e.target.files[0]
-       })
+    handleSubmit=e=>{
+        e.preventDefault()
+        this.service.addMovie(this.state.movie)
+            .then(response=> {
+                this.movieId = response._id
+            })
+    }
+
+    handleFileUpload = e => {
+
+        this.uploadData = new FormData();
+        this.uploadData.append("poster_path", e.target.files[0]);
+
+        this.service.handleUpload(this.uploadData)
+            .then(response => {
+                console.log(response)
+                this.setState({
+                    movie: {
+                        ...this.state.movie, poster_path: response.secure_url
+                    }
+                })
+            })
+            .catch(err => console.log(err))
     }
 
 
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={`/movies/${this.movieId}`} />
+          }
         return (
             <div>
 
@@ -72,7 +93,7 @@ class MovieAddForm extends Component {
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group">
                                 <label htmlFor="title">Título</label>
-                                <input onChange={this.handlechange} value={this.state.movie.original_title} type="text" className="form-control" id="original_title" name="original_title" />
+                                <input required onChange={this.handlechange} value={this.state.movie.original_title} type="text" className="form-control" id="original_title" name="original_title" />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="description">Descripción</label>
@@ -84,9 +105,9 @@ class MovieAddForm extends Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="poster_path">Poster</label>
-                                <input onChange={this.getFile} type="file" className="form-control" id="poster_path" name="poster_path" />
+                                <input onChange={this.handleFileUpload} type="file" className="form-control" id="poster_path" name="poster_path" />
                             </div>
-                            <button type="submit" className="btn btn-dark">Añadir</button>
+                            {this.state.movie.poster_path.length ? <button onClick={this.setRedirect} type="submit" className="btn btn-dark">Añadir</button> : null}
                         </form>
                     </Modal.Body>
                 </Modal>

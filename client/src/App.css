@@ -165,6 +165,9 @@ label{
     width: 80vw;
     height: 60vh;
   }
+  .error img{
+    margin-left: -11vh;
+  }
 
 }
 
@@ -192,6 +195,9 @@ label{
   }
   .top-button-edit{
     padding-right: 34vw;
+  }
+  .error img{
+    margin-left: -6%;
   }
 
 }
@@ -221,6 +227,9 @@ label{
   }
   .top-button-edit{
     padding-right: 61vw;
+  }
+  .error img{
+    margin-left: -9vh;
   }
 }
 
