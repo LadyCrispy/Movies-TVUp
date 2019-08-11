@@ -90,4 +90,10 @@ app.use('/api', movies)
 const upload = require('./routes/file_upload.routes')
 app.use('/api', upload)
 
+
+app.use((req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+  });
+
 module.exports = app;
+

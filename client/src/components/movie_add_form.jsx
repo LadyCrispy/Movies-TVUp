@@ -45,6 +45,10 @@ class MovieAddForm extends Component {
                 this.setState({
                     redirect: true
                 })
+                setTimeout(() => {
+                    this.handleClose()
+                }, 300);
+
             }, 1000);
         }else{this.handleShow()}
     }
@@ -77,12 +81,11 @@ class MovieAddForm extends Component {
 
 
     render() {
-        if (this.state.redirect) {
-            return <Redirect to={`/movies/${this.movieId}`} />
-          }
+        
         return (
+            
             <div>
-
+                {this.state.redirect?<Redirect to={`/movies/${this.movieId}`} />:null}
                 <button className="btn btn-dark add-button " onClick={this.handleShow}>Añadir película</button>
 
                 <Modal show={this.state.show} onHide={this.handleClose} className='modal'>
