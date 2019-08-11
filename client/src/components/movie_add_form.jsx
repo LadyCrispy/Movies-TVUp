@@ -43,10 +43,19 @@ class MovieAddForm extends Component {
         if(this.state.movie.original_title.length){
             setTimeout(() => {
                 this.setState({
-                    redirect: true
+                    redirect: true,
                 })
                 setTimeout(() => {
                     this.handleClose()
+                    this.setState({
+                        movie: {
+                            original_title: '',
+                            overview: '',
+                            poster_path: '',
+                            video: 'https://',
+            
+                        }
+                    })
                 }, 300);
 
             }, 1000);
