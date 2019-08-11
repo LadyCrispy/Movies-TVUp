@@ -9,7 +9,7 @@ export const MoviesCard= (props) =>{
         <Card.Img variant="top" src={props.poster_path} alt={props.original_title} />
         <Card.Body>
             <Card.Title>{props.original_title}</Card.Title>
-            <Link className="btn btn-md btn-dark" to={`/movies/${props._id}`}> Ver detalles </Link>
+            <Link className="card-btn btn btn-md btn-dark" to={`/movies/${props._id}`}> Detalles </Link>
             <Button variant="danger" onClick={()=>props.delete(props._id)}>Eliminar</Button>
             
         </Card.Body>
