@@ -35,7 +35,7 @@ export default class MovieDetails extends Component {
     handleSubmit=(e)=>{
         e.preventDefault()
         this.service.editTheMovie(this.state.movie._id, (this.state.movie))
-            .then(x=>console.log('done'))
+            .then(x=>alert('Película actualizada'))
     }
 
     
