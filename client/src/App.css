@@ -131,6 +131,13 @@ label{
 .card-btn{
   margin-right: 1.25rem;
 }
+.not-film{
+  margin: 10vh 20vw;
+  font-size: 10vw;
+}
+.not-film img{
+  width: 100%;
+}
 
 
 @media (max-width: 600px) {
@@ -250,6 +257,9 @@ label{
   .search-movie{
     margin-left: 7.1vw;
   }
+  .not-film{
+    margin-left: 7.1vw;
+  }
 }
 
 
@@ -272,5 +282,8 @@ label{
     .search-movie{
       margin-left: -3.9vw;
       font-size: 1rem;
+    }
+    .not-film h1{
+      font-size: 1.5rem;
     }
 }

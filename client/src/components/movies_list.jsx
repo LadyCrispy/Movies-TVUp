@@ -47,7 +47,6 @@ class MoviesList extends Component {
             <div className='container'>
  
                 
-                    {/* <input onChange={this.searchMovie} type="text" placeholder='Buscar película' value={this.state.search} className='search-movie' id="search" name="search"/> */}
                     <FormControl as='input' onChange={this.searchMovie} type="text" placeholder='Buscar película' value={this.state.search} className='search-movie'/>
 
                 <section className='hero'>
@@ -55,15 +54,25 @@ class MoviesList extends Component {
                     <h1>Nuestras películas</h1>
 
                 </section>
-                {/* <MovieAddForm className='add-btn'/> */}
+                
                 <div className='row movies-list'>
 
-                    {
-                    this.state.search.length ? 
-                        this.state.filteredMovies.map((movie, idx)=> <MoviesCard {...movie} key={idx} delete={this.deleteMovie}/>) 
-                        : 
+                  
+
+                    {this.state.search.length ? 
+                        this.state.filteredMovies.length ? 
+                            this.state.filteredMovies.map((movie, idx)=> <MoviesCard {...movie} key={idx} delete={this.deleteMovie}/>) 
+                            :
+                            <div className='not-film'>
+                                <h1>La película que buscas no existe</h1>
+                                <img src="https://res.cloudinary.com/dgesryvti/image/upload/v1565341464/Movies_posters/oie_transparent_1_uo2oio.png" alt="errorimage"/><br/>
+                            </div>
+                        :
                         this.state.movies.map((movie, idx)=> <MoviesCard {...movie} key={idx} delete={this.deleteMovie}/>) 
+
                     }
+
+                    
                 </div>
             
             </div>
